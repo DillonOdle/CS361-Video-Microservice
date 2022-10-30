@@ -15,6 +15,8 @@ def convert_image_to_video():
         # Check request input
         if ('path_in' in fields and 'images' in fields):
             return jsonify("Cannot have path_in and images in the same request"), 400
+        elif (not 'path_in' in fields and not 'images' in fields):
+            return jsonify("Either path_in or images must be included in the request"), 400
 
         if ('path_out' in fields):
             path_out = fields['path_out']
